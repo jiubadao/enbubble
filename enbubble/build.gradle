@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+
+
+
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'sensetime'//bintray.com用户名
+    repoName = 'maven' //远程仓库名
+    groupId = 'enbubble'//jcenter上的路径
+    artifactId = 'enbubble'//项目名称
+    publishVersion = '1.0.1'//版本号
+    desc = 'enbubble update'//描述，不重要
+    website = 'https://www.sensetime.com/'//网站，最好有，不重要
+}
+
+
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+}
